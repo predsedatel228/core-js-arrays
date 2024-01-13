@@ -125,7 +125,16 @@ function getStringsLength(arr) {
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
 function getAverage(arr) {
-  return arr.reduce((acc, current) => acc + current / arr.length);
+  let answer;
+  if (arr.length === 0) {
+    answer = 0;
+  } else {
+    answer =
+      Math.ceil(
+        (arr.reduce((acc, current) => acc + current) / arr.length) * 100
+      ) / 100;
+  }
+  return answer;
 }
 
 /**
