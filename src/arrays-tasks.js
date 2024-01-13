@@ -21,13 +21,10 @@
  *    getIntervalArray(3, 3) => [ 3 ]
  */
 function getIntervalArray(start, end) {
-  let counter = -1;
-  const arr = new Array(end - start + 1);
-  arr.fill(start);
-  return arr.map((el) => {
-    counter += 1;
-    return el + counter;
-  });
+  return Array.from(
+    { length: Math.abs(end - start) + 1 },
+    (el, i) => start + i
+  );
 }
 
 /**
@@ -141,8 +138,14 @@ function getAverage(arr) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  let answer = true;
+  let newArr = [];
+  newArr = arr.filter((el) => el.length !== arr[0].length);
+  if (newArr.length !== 0) {
+    answer = false;
+  }
+  return answer;
 }
 
 /**
