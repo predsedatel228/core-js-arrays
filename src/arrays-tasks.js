@@ -559,8 +559,20 @@ function shiftArray(/* arr, n */) {
  *   sortDigitNamesByNumericOrder([ 'nine','eight','nine','eight' ]) => [ 'eight','eight','nine','nine']
  *   sortDigitNamesByNumericOrder([ 'one','one','one','zero' ]) => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  const dict = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ];
+  return arr.sort((a, b) => dict.indexOf(a) - dict.indexOf(b));
 }
 
 /**
@@ -582,8 +594,23 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  let answer = [];
+  if (arr.length % 2 === 0) {
+    answer = (
+      arr.slice(Math.floor(arr.length / 2), arr.length).join('') +
+      arr.slice(0, Math.floor(arr.length / 2)).join('')
+    ).split('');
+  } else {
+    answer = (
+      arr.slice(Math.floor(arr.length / 2) + 1, arr.length).join('') +
+      arr
+        .slice(Math.floor(arr.length / 2), Math.ceil(arr.length / 2))
+        .join('') +
+      arr.slice(0, Math.floor(arr.length / 2)).join('')
+    ).split('');
+  }
+  return answer;
 }
 
 module.exports = {
