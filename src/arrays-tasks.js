@@ -452,8 +452,8 @@ function getIdentityMatrix(n) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  return numbers.filter((el) => el % 2 !== 0).map((el) => numbers.indexOf(el));
 }
 
 /**
@@ -505,8 +505,8 @@ function getMaxItems(arr, n) {
  *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
-function findCommonElements(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function findCommonElements(arr1, arr2) {
+  return arr1.filter((el) => arr2.indexOf(el) !== -1);
 }
 
 /**
@@ -520,8 +520,16 @@ function findCommonElements(/* arr1, arr2 */) {
  *    findLongestIncreasingSubsequence([3, 10, 2, 1, 20]) => 2
  *    findLongestIncreasingSubsequence([50, 3, 10, 7, 40, 80]) => 3
  */
-function findLongestIncreasingSubsequence(/* nums */) {
-  throw new Error('Not implemented');
+function findLongestIncreasingSubsequence(nums) {
+  const results = Array.from({ length: 0 });
+  nums.reduce((acc, el, index) => {
+    results.push(acc);
+    if (el < nums[index + 1] && index + 1 <= nums.length - 1) {
+      return acc + 1;
+    }
+    return 1;
+  }, 1);
+  return Math.max(...results);
 }
 
 /**
@@ -558,8 +566,18 @@ function propagateItemsByPositionIndex(arr) {
  *    shiftArray(['a', 'b', 'c', 'd'], -1) => ['b', 'c', 'd', 'a']
  *    shiftArray([10, 20, 30, 40, 50], -3) => [40, 50, 10, 20, 30]
  */
-function shiftArray(/* arr, n */) {
-  throw new Error('Not implemented');
+function shiftArray(arr, n) {
+  let sliceArr1;
+  let sliceArr2;
+  if (n > 0) {
+    sliceArr1 = arr.slice(0, n + 1);
+    sliceArr2 = arr.slice(n + 1, arr.length);
+  }
+  if (n < 0) {
+    sliceArr1 = arr.slice(0, -n);
+    sliceArr2 = arr.slice(-n, arr.length);
+  }
+  return sliceArr2.concat(sliceArr1);
 }
 
 /**
